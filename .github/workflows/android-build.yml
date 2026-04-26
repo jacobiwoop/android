@@ -1,0 +1,51 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ "main" ] # Déclenche le build à chaque push sur la branche 'main'
+  pull_request:
+    branches: [ "main" ] # Déclenche le build à chaque PR vers la branche 'main'
+  workflow_dispatch: # Permet de lancer le workflow manuellement depuis l'interface GitHub
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest # Utilise un environnement Linux
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # Utilise la version 20 de Node.js (stable)
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Web App (Vite)
+        run: npm run build
+
+      - name: Sync Capacitor
+        run: npx cap sync android # Copie le build web vers le projet Android
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17' # Android Studio et Gradle récents utilisent généralement Java 17
+          distribution: 'temurin'
+
+      - name: Make gradlew executable
+        run: chmod +x ./android/gradlew # S'assure que le script gradle peut être exécuté
+
+      - name: Build Debug APK
+        working-directory: ./android # Se place dans le dossier android pour lancer gradle
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk # Chemin où Gradle génère l'APK
+          retention-days: 7 # L'APK sera conservé pendant 7 jours
