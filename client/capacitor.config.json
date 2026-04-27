@@ -1,0 +1,21 @@
+{
+  "appId": "com.luminazen.app",
+  "appName": "LuminaZen",
+  "webDir": "dist",
+  "plugins": {
+    "Camera": {
+      "permissions": ["camera", "photos"]
+    },
+    "Geolocation": {
+      "permissions": ["location"]
+    }
+  },
+  "android": {
+    "allowMixedContent": true,
+    "backgroundColor": "#ffffff",
+    "webContentsDebuggingEnabled": true
+  },
+  "ios": {
+    "contentInset": "automatic"
+  }
+}

@@ -1,0 +1,411 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vintage Canon Camera | Marketplace</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#abf4ac",
+              "on-tertiary-fixed-variant": "#07521d",
+              "surface-bright": "#f9f9f9",
+              "on-tertiary-fixed": "#002107",
+              "on-tertiary-container": "#c7ffc5",
+              "on-secondary-fixed-variant": "#005313",
+              "inverse-primary": "#88d982",
+              surface: "#f9f9f9",
+              "error-container": "#ffdad6",
+              outline: "#707a6c",
+              background: "#f9f9f9",
+              "surface-container-low": "#f3f3f3",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#002204",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-container": "#91f78e",
+              primary: "#0d631b",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              secondary: "#006e1c",
+              "on-secondary-container": "#00731e",
+              "surface-container": "#eeeeee",
+              "surface-dim": "#dadada",
+              tertiary: "#1d622b",
+              "secondary-fixed-dim": "#78dc77",
+              "secondary-fixed": "#94f990",
+              "primary-fixed-dim": "#88d982",
+              "on-primary-container": "#cbffc2",
+              "on-primary-fixed-variant": "#005312",
+              "on-background": "#1a1c1c",
+              "on-error": "#ffffff",
+              error: "#ba1a1a",
+              "on-surface": "#1a1c1c",
+              "on-primary-fixed": "#002204",
+              "outline-variant": "#bfcaba",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "inverse-surface": "#2f3131",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#a3f69c",
+              "surface-tint": "#1b6d24",
+              "on-surface-variant": "#40493d",
+              "tertiary-container": "#387b41",
+              "tertiary-fixed-dim": "#90d792",
+              "primary-container": "#2e7d32",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "container-max": "1280px",
+              xl: "64px",
+              base: "8px",
+              lg: "40px",
+              md: "24px",
+              sm: "12px",
+              gutter: "20px",
+              xs: "4px",
+            },
+            fontFamily: {
+              "headline-md": ["Inter"],
+              "body-md": ["Inter"],
+              "body-sm": ["Inter"],
+              "title-sm": ["Inter"],
+              "display-lg": ["Inter"],
+              "label-bold": ["Inter"],
+            },
+            fontSize: {
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+              "title-sm": ["18px", { lineHeight: "1.4", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-bold": ["12px", { lineHeight: "1", fontWeight: "700" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-background font-body-md min-h-screen">
+    <!-- TopAppBar from JSON -->
+    <header
+      class="bg-white dark:bg-zinc-950 docked full-width top-0 sticky z-40 border-b border-zinc-100 dark:border-zinc-800 shadow-sm dark:shadow-none flex items-center justify-between px-4 h-16 w-full"
+    >
+      <div class="flex items-center gap-4">
+        <button
+          class="active:opacity-70 transition-opacity hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors p-2 rounded-full"
+        >
+          <span
+            class="material-symbols-outlined text-green-700 dark:text-green-500"
+            >arrow_back</span
+          >
+        </button>
+        <h1
+          class="font-sans font-semibold text-lg tracking-tight text-green-700 dark:text-green-500"
+        >
+          Marketplace
+        </h1>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          class="active:opacity-70 transition-opacity hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors p-2 rounded-full"
+        >
+          <span
+            class="material-symbols-outlined text-green-700 dark:text-green-500"
+            >search</span
+          >
+        </button>
+        <button
+          class="active:opacity-70 transition-opacity hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors p-2 rounded-full"
+        >
+          <span
+            class="material-symbols-outlined text-green-700 dark:text-green-500"
+            >share</span
+          >
+        </button>
+      </div>
+    </header>
+    <main class="max-w-[1280px] mx-auto pb-32">
+      <!-- Asymmetric Image Gallery -->
+      <section
+        class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-xs md:gap-sm px-0 md:px-lg md:pt-lg h-[400px] md:h-[600px]"
+      >
+        <div
+          class="md:col-span-2 md:row-span-2 relative overflow-hidden md:rounded-xl"
+        >
+          <img
+            class="w-full h-full object-cover"
+            data-alt="A classic vintage silver and black Canon 35mm film camera positioned on a weathered wooden table with soft morning light."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2m8n9a26hvEnPNHGSFxlGOuIFu91b7NKFOeQx9Bs1DU3RBjV3V22Yv3rSPdazNsAVsX40GOm7clSAMw3HaeREHUEdQYMDcA3RX4yZI6EtoR2SpTMu6hHvinMxaco4y-f993JCnZYcosE_G8CqI1TIqlVX32W130khCmAMRi0p1rSCJ8d_bvD8J5vcxEzMOmHBQMGGWuw-W_1P5UlCgU-uQJ6ThMwyHzISJCOmAI7CP3k1JVwssvaWyeVR6IYxHbKtaFKFcPJ-CxnU"
+          />
+          <div class="absolute top-4 left-4">
+            <span
+              class="bg-tertiary-container text-on-tertiary-container text-label-bold px-3 py-1.5 rounded-full font-label-bold shadow-sm"
+            >
+              FEATURED AD
+            </span>
+          </div>
+        </div>
+        <div
+          class="hidden md:block md:col-span-1 md:row-span-1 relative overflow-hidden rounded-xl group"
+        >
+          <img
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            data-alt="Close up of a vintage camera lens reflecting a sunlit garden, capturing intricate details of the glass and aperture rings."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkna9bLplipfEmbufSxVBUAwRQe3wmE3Dq7VSJlx5MKgGCDsjLwAVTqnNzoswQdckJkzgWFFwWDyX5O7XBNGgsA6ZR6eB_1agy7g8RW8u0ahO88gux_MW6chT91BK9zpZvaQULA0jvau2z5f6sJrI_FcAEE4f8QhXMfc3f0HyRruoznb4zPgq-CYBEBHcM2JnDXvZguLplZonL-7FamgIZWT2JyxCCc9SeQXmmPUunfvpMtWwDuZ9OHoHuWXjA-Hn-gWuEhRhXJrQ2"
+          />
+        </div>
+        <div
+          class="hidden md:block md:col-span-1 md:row-span-1 relative overflow-hidden rounded-xl group"
+        >
+          <img
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            data-alt="Side profile view of a vintage Canon camera showing the film advance lever and mechanical dials against a dark background."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9i3nEOyRCgIlYZDQLWYDjVqz2XYeS3gdBEfyZF2tlOlj_asWYwqZu_tiI0RfUXAwsT_lEenqCMs8Y8JLZzlj_4ADSwKUSUmjoeOHQbxtajKET0E5VxG80DZFUkf_ozaOHus1LduxZp4ikR_cMBqb6GlsUe4ruSSf6fNTkQPmOcqFfT3XweSGrG8KRVn6j-0LTylbVQUJGKc37b5OaaWRYingB78lt8aOpAXsPUgkCzoLI3A-UOQLf9IHj7thVnp4yE3nJaOe-YNBF"
+          />
+        </div>
+        <div
+          class="hidden md:block md:col-span-2 md:row-span-1 relative overflow-hidden rounded-xl group"
+        >
+          <img
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            data-alt="A collection of vintage camera accessories, leather cases, and film canisters arranged neatly on a rustic surface."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLfWoYcZ9Ef2fyyhF0ldXbNdTMAuj-pE1T9NU06ulnbo9LgFM60iS5OEUaP2Zk18Ev3ck_kK-GPNdBXplL7t0-NEujOHD3NYKVT_buuIZT_uGHSEUryTqf6qwg1A4KCjfOEQBCBUi0gvFkSmBos6xlwiq8ijN5vpAq40Yjema-Rc3eXdjl1_RfNHACxGJLFviorfLdHt64Z6p76phtoOUXxDRy-zYNEbWDr6-kRWNSYJNi8COD77OIRXqNmSV_O5NRuN2VVFiOf6Kq"
+          />
+          <button
+            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur text-primary text-label-bold px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white"
+          >
+            <span class="material-symbols-outlined text-[18px]"
+              >photo_library</span
+            >
+            VIEW ALL 12 PHOTOS
+          </button>
+        </div>
+      </section>
+      <!-- Product Details Grid -->
+      <div class="px-4 md:px-lg mt-md grid grid-cols-1 lg:grid-cols-12 gap-lg">
+        <!-- Left Column: Content -->
+        <div class="lg:col-span-8 space-y-md">
+          <div class="flex flex-col gap-xs">
+            <div class="flex items-center gap-2 text-primary font-label-bold">
+              <span class="material-symbols-outlined text-[16px]"
+                >location_on</span
+              >
+              <span>Brooklyn, New York</span>
+              <span class="text-outline-variant">•</span>
+              <span>2 hours ago</span>
+            </div>
+            <h2 class="text-headline-md font-headline-md text-on-background">
+              Vintage Canon Camera
+            </h2>
+            <div class="flex items-center gap-4">
+              <span class="text-secondary text-[28px] font-bold">$120</span>
+              <span
+                class="bg-secondary-container text-on-secondary-container text-label-bold px-3 py-1 rounded-full"
+                >Negotiable</span
+              >
+            </div>
+          </div>
+          <div class="flex gap-2 overflow-x-auto hide-scrollbar py-2">
+            <span
+              class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-4 py-2 rounded-full text-label-bold border border-tertiary-fixed-dim"
+            >
+              Analog
+            </span>
+            <span
+              class="bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-label-bold border border-outline-variant"
+            >
+              35mm Film
+            </span>
+            <span
+              class="bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-label-bold border border-outline-variant"
+            >
+              Original Case
+            </span>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-md rounded-xl border border-zinc-100 shadow-sm"
+          >
+            <h3 class="text-title-sm font-title-sm mb-sm text-on-surface">
+              Description
+            </h3>
+            <div
+              class="text-body-md text-on-surface-variant space-y-sm leading-relaxed"
+            >
+              <p>
+                Beautifully maintained vintage Canon film camera from the 1970s.
+                This piece is perfect for both collectors and photography
+                enthusiasts who appreciate the tactile experience of manual
+                photography.
+              </p>
+              <p>
+                The camera body is in excellent condition with minimal brassing.
+                All mechanical components including the shutter speeds and film
+                advance are working flawlessly. The viewfinder is clear and the
+                light meter has been tested for accuracy.
+              </p>
+              <ul class="list-disc pl-5 space-y-xs">
+                <li>50mm f/1.8 Prime Lens included (Clean glass, no fungus)</li>
+                <li>Original leather strap and protective case</li>
+                <li>New light seals recently installed</li>
+                <li>Comes with a fresh roll of Portra 400</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Right Column: Seller & Actions -->
+        <div class="lg:col-span-4 space-y-md">
+          <!-- Seller Card -->
+          <div
+            class="bg-white p-md rounded-xl border border-zinc-100 shadow-sm sticky top-[88px]"
+          >
+            <h3
+              class="text-label-bold text-outline uppercase tracking-widest mb-md"
+            >
+              Seller Information
+            </h3>
+            <div class="flex items-center gap-md mb-md">
+              <div
+                class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-fixed"
+              >
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="Portrait of a friendly middle-aged man with short hair and glasses, representing a reliable and verified marketplace seller."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfJoTi2mp5x5jDRQaQ3pm50FCx6eq07lwigB_Hr18u2v3CjmedTRYMn-X4M3B09xEmedcWAG1_wK85agwHeyMYM02F2n5ayr8h4HHfRPTrjDjCgZkXLpUQJxLyWCOJO4-sZN8DVVblgpl7GO7ZSw3DlxYPUq1s2ge0tCBAIpvc_epXTYfopThB1Pnwe9bLjKCDqCRMMGBQ5mnMjtIq_YIH4IqgaD-IMhLr9hVt9SIedHmCM46R4Ud6WIvkLzk5QN20k_49vkyHw-Z4"
+                />
+              </div>
+              <div class="flex flex-col">
+                <span class="text-title-sm font-title-sm text-on-surface"
+                  >Verified Seller</span
+                >
+                <div
+                  class="flex items-center gap-1 text-on-tertiary-fixed-variant"
+                >
+                  <span
+                    class="material-symbols-outlined text-[18px]"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                  <span class="font-bold">4.9</span>
+                  <span class="text-body-sm text-outline">(128 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-sm">
+              <div
+                class="flex items-center justify-between text-body-sm py-2 border-b border-zinc-50"
+              >
+                <span class="text-outline">Member Since</span>
+                <span class="font-medium">March 2023</span>
+              </div>
+              <div
+                class="flex items-center justify-between text-body-sm py-2 border-b border-zinc-50"
+              >
+                <span class="text-outline">Response Rate</span>
+                <span class="font-medium text-primary">98%</span>
+              </div>
+              <div class="flex items-center justify-between text-body-sm py-2">
+                <span class="text-outline">Location</span>
+                <span class="font-medium">Brooklyn, NY</span>
+              </div>
+            </div>
+            <div class="mt-md space-y-sm">
+              <button
+                class="w-full py-4 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform"
+              >
+                <span class="material-symbols-outlined">chat_bubble</span>
+                Chat with Seller
+              </button>
+              <button
+                class="w-full py-4 border-2 border-secondary text-secondary rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-green-50 active:scale-95 transition-transform"
+              >
+                <span class="material-symbols-outlined">call</span>
+                Call Seller
+              </button>
+            </div>
+          </div>
+          <!-- Safety Tips -->
+          <div class="bg-surface-container-high p-md rounded-xl">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-primary"
+                >gpp_maybe</span
+              >
+              <span class="font-bold text-sm">Safety Tips</span>
+            </div>
+            <p class="text-body-sm text-on-surface-variant">
+              Always meet in a public place and inspect the item before making
+              payment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Sticky Mobile Bottom Bar (Chat only) -->
+    <div
+      class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-zinc-100 p-4 z-50 flex gap-4 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]"
+    >
+      <button
+        class="flex-1 py-4 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform"
+      >
+        <span class="material-symbols-outlined">chat_bubble</span>
+        Chat
+      </button>
+      <button
+        class="w-14 h-14 border border-zinc-200 rounded-xl flex items-center justify-center text-primary active:scale-90 transition-transform"
+      >
+        <span class="material-symbols-outlined">favorite</span>
+      </button>
+    </div>
+  </body>
+</html>

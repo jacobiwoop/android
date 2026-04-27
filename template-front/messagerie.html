@@ -1,0 +1,514 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Inbox - Marketplace</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#abf4ac",
+              "on-tertiary-fixed-variant": "#07521d",
+              "surface-bright": "#f9f9f9",
+              "on-tertiary-fixed": "#002107",
+              "on-tertiary-container": "#c7ffc5",
+              "on-secondary-fixed-variant": "#005313",
+              "inverse-primary": "#88d982",
+              surface: "#f9f9f9",
+              "error-container": "#ffdad6",
+              outline: "#707a6c",
+              background: "#f9f9f9",
+              "surface-container-low": "#f3f3f3",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#002204",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-container": "#91f78e",
+              primary: "#0d631b",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              secondary: "#006e1c",
+              "on-secondary-container": "#00731e",
+              "surface-container": "#eeeeee",
+              "surface-dim": "#dadada",
+              tertiary: "#1d622b",
+              "secondary-fixed-dim": "#78dc77",
+              "secondary-fixed": "#94f990",
+              "primary-fixed-dim": "#88d982",
+              "on-primary-container": "#cbffc2",
+              "on-primary-fixed-variant": "#005312",
+              "on-background": "#1a1c1c",
+              "on-error": "#ffffff",
+              error: "#ba1a1a",
+              "on-surface": "#1a1c1c",
+              "on-primary-fixed": "#002204",
+              "outline-variant": "#bfcaba",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "inverse-surface": "#2f3131",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#a3f69c",
+              "surface-tint": "#1b6d24",
+              "on-surface-variant": "#40493d",
+              "tertiary-container": "#387b41",
+              "tertiary-fixed-dim": "#90d792",
+              "primary-container": "#2e7d32",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "container-max": "1280px",
+              xl: "64px",
+              base: "8px",
+              lg: "40px",
+              md: "24px",
+              sm: "12px",
+              gutter: "20px",
+              xs: "4px",
+            },
+            fontFamily: {
+              "headline-md": ["Inter"],
+              "body-md": ["Inter"],
+              "body-sm": ["Inter"],
+              "title-sm": ["Inter"],
+              "display-lg": ["Inter"],
+              "label-bold": ["Inter"],
+            },
+            fontSize: {
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+              "title-sm": ["18px", { lineHeight: "1.4", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-bold": ["12px", { lineHeight: "1", fontWeight: "700" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        vertical-align: middle;
+      }
+      body {
+        background-color: #f9f9f9;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #e2e2e2;
+        border-radius: 10px;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="font-body-md text-on-background">
+    <!-- TopAppBar -->
+    <header
+      class="bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 shadow-sm dark:shadow-none docked full-width top-0 sticky z-40 flex items-center justify-between px-4 h-16 w-full"
+    >
+      <div class="flex items-center gap-4">
+        <button
+          class="active:opacity-70 transition-opacity p-2 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
+        >
+          <span
+            class="material-symbols-outlined text-green-700 dark:text-green-500"
+            >menu</span
+          >
+        </button>
+        <h1
+          class="font-sans font-semibold text-lg tracking-tight text-green-700 dark:text-green-500"
+        >
+          Marketplace
+        </h1>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          class="active:opacity-70 transition-opacity p-2 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
+        >
+          <span
+            class="material-symbols-outlined text-zinc-500 dark:text-zinc-400"
+            >search</span
+          >
+        </button>
+      </div>
+    </header>
+    <main class="max-w-[1280px] mx-auto px-4 py-8 pb-32">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Side Navigation Drawer (Desktop Only Viewport Logic) -->
+        <aside
+          class="hidden lg:flex flex-col w-80 bg-white dark:bg-zinc-900 h-fit rounded-xl shadow-sm border border-zinc-100 overflow-hidden sticky top-24"
+        >
+          <div class="p-6 flex items-center gap-4 border-b border-zinc-100">
+            <img
+              class="w-12 h-12 rounded-full object-cover"
+              data-alt="professional portrait of a friendly man in a green linen shirt against a soft bokeh library background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGyd0OfFRFnbh7tF5p5cDBqw2TLFxDVLSSDFCKjzhRZ5fCtB7PPxoatjvG_W6ulqW5ne7JiG_huaMHd33fj8lGqDc5HAefAZ-0NXhdhASOSdxNWiKB5TuIBUTSio_sVKovEKuVXD7ZUoaIUoxGoE2OoL1ya5IKlaNXXwfnJe2sasvnzJYa9-bcOm3xEEC0OEvG60US8WRSqJmRBqhLuvKxN2wPott-J3EiiWMJM_8PxyQR8_PglsQIsunkmRUKMNGuAs4eMy25rd0x"
+            />
+            <div>
+              <p class="font-title-sm text-on-surface">Verified Seller</p>
+              <div class="flex items-center text-zinc-500 text-xs">
+                <span class="material-symbols-outlined text-[14px] mr-1"
+                  >location_on</span
+                >
+                <span>San Francisco, CA</span>
+              </div>
+            </div>
+          </div>
+          <nav class="flex flex-col py-2">
+            <a
+              class="flex items-center gap-4 px-6 py-4 text-zinc-600 hover:bg-zinc-50 transition-transform hover:translate-x-1"
+              href="#"
+            >
+              <span class="material-symbols-outlined">devices</span>
+              <span class="font-sans text-sm font-medium">Electronics</span>
+            </a>
+            <a
+              class="flex items-center gap-4 px-6 py-4 text-zinc-600 hover:bg-zinc-50 transition-transform hover:translate-x-1"
+              href="#"
+            >
+              <span class="material-symbols-outlined">directions_car</span>
+              <span class="font-sans text-sm font-medium">Vehicles</span>
+            </a>
+            <a
+              class="flex items-center gap-4 px-6 py-4 text-zinc-600 hover:bg-zinc-50 transition-transform hover:translate-x-1"
+              href="#"
+            >
+              <span class="material-symbols-outlined">home_work</span>
+              <span class="font-sans text-sm font-medium">Property</span>
+            </a>
+            <a
+              class="flex items-center gap-4 px-6 py-4 text-zinc-600 hover:bg-zinc-50 transition-transform hover:translate-x-1"
+              href="#"
+            >
+              <span class="material-symbols-outlined">chair</span>
+              <span class="font-sans text-sm font-medium">Furniture</span>
+            </a>
+            <a
+              class="flex items-center gap-4 px-6 py-4 text-zinc-600 hover:bg-zinc-50 transition-transform hover:translate-x-1"
+              href="#"
+            >
+              <span class="material-symbols-outlined">work</span>
+              <span class="font-sans text-sm font-medium">Jobs</span>
+            </a>
+          </nav>
+        </aside>
+        <!-- Inbox Content Area -->
+        <section class="flex-1">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="font-headline-md text-headline-md text-on-surface">
+              Messages
+            </h2>
+            <div class="flex gap-2">
+              <button
+                class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-label-bold text-label-bold active:scale-95 transition-transform"
+              >
+                Archive All
+              </button>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-zinc-100 divide-y divide-zinc-50 overflow-hidden"
+          >
+            <!-- Conversation Row 1 (Unread) -->
+            <div
+              class="group flex items-center gap-4 p-4 md:p-6 hover:bg-zinc-50 transition-colors cursor-pointer relative"
+            >
+              <!-- Unread Indicator -->
+              <div
+                class="absolute left-1.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-primary rounded-full"
+              ></div>
+              <div class="relative flex-shrink-0">
+                <img
+                  class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm"
+                  data-alt="close-up of a smiling young woman with curly hair and glasses, natural outdoor lighting, warm tones"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrDSXUwpp36gogjomC97lHwCTa_lIhb4prZ07d2fn9T0uqoqd-dGd6RzwB-DBnDtNwdHXWxIJIDRnjCyQFtJ45S73-_IBW7AUcnA-CxwRHULf7b8jENP6msXVF-YgJVXKyFdL5D7Aw69SYopsCRwTgKs_Q1YfHVOCzKzKu6h_B84hJg0j2Qoh-Hf1RkkpCvHf3Rmoa8mc--oviyIJwvTvwbPvMOFkxqajWhRA4MuQx0BS7OFruLz8YRRPi45PSa0j5SmNlB3KUxx0J"
+                />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-1">
+                  <h3 class="font-title-sm text-on-surface truncate pr-2">
+                    Sarah Jenkins
+                  </h3>
+                  <span
+                    class="font-label-bold text-label-bold text-primary whitespace-nowrap"
+                    >2:45 PM</span
+                  >
+                </div>
+                <div class="flex items-center gap-1 mb-1">
+                  <span
+                    class="font-label-bold text-[10px] uppercase tracking-wider text-zinc-400"
+                    >Discussion on:</span
+                  >
+                  <span
+                    class="font-label-bold text-[10px] uppercase tracking-wider text-secondary truncate"
+                    >Vintage Leather Camera Bag</span
+                  >
+                </div>
+                <p class="text-body-sm font-medium text-on-surface truncate">
+                  Is the price negotiable? I can pick it up tonight if you're
+                  available.
+                </p>
+              </div>
+              <div class="flex-shrink-0 hidden sm:block">
+                <img
+                  class="w-16 h-16 rounded-xl object-cover border border-zinc-100"
+                  data-alt="aesthetic close-up of a worn brown leather vintage camera bag on a rustic wooden table with soft morning light"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDItIAB_JjP9AupWMNjimxLMBuxboEfle6TyfyILnH0sR3FGpejklzEnBRPLqSSo_2REwREcXKSqnnqAcKYqYVbjLMsnJn8ryHVeevZevI-GMmxLQBlv0wIIhyfHNflTGhXEzTk_YgQ8JUJoRNZQlKJJzp1HkKZFKWs-JKEtSEejW9rEUziwtknN_9BAIbT3Req-fOxofEb-OdzynJgQ-uAvdA6ho0l4XTqCr6UOFBQEoGqFacxSkfSRnwnNAIp9YGgCLMkauDE5XAv"
+                />
+              </div>
+              <div
+                class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ml-2"
+              >
+                <span class="material-symbols-outlined text-zinc-400"
+                  >more_vert</span
+                >
+              </div>
+            </div>
+            <!-- Conversation Row 2 -->
+            <div
+              class="group flex items-center gap-4 p-4 md:p-6 hover:bg-zinc-50 transition-colors cursor-pointer"
+            >
+              <div class="relative flex-shrink-0">
+                <img
+                  class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm"
+                  data-alt="headshot of a middle-aged man with a neat beard and a professional navy blazer, bright studio lighting"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_2MJSEn_uKSb2RWNbvW_KeNnAJMEvvIczW32UUwM-GlWVnucpKMgPEKaGKiYOl-8OqM-fqngEXceBEqNNh-GS3Jjbvx3dDBXDDVbMJXRcsjMI9hh3A_RZIDeM2rRbLAifXCPvtbbAFazm59LjqhF7DRkM_-OJWmDYje0nbwOsMxrhdBDTYJ1e1qxvjzszeCaBB8oHW3aLQMK2Qk1lnXYmtw7cCe_dc4W3yGGwGBTlN5Azs7hhdJxf4JHh_zbcD8rEPnE_b-vERqkw"
+                />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-1">
+                  <h3 class="font-title-sm text-on-surface truncate pr-2">
+                    Michael Chen
+                  </h3>
+                  <span
+                    class="font-label-bold text-label-bold text-zinc-400 whitespace-nowrap"
+                    >Yesterday</span
+                  >
+                </div>
+                <div class="flex items-center gap-1 mb-1">
+                  <span
+                    class="font-label-bold text-[10px] uppercase tracking-wider text-zinc-400"
+                    >Discussion on:</span
+                  >
+                  <span
+                    class="font-label-bold text-[10px] uppercase tracking-wider text-secondary truncate"
+                    >2019 MacBook Pro 16"</span
+                  >
+                </div>
+                <p class="text-body-sm text-zinc-500 truncate">
+                  Thanks! The laptop works perfectly. Left you a 5-star review.
+                </p>
+              </div>
+              <div class="flex-shrink-0 hidden sm:block">
+                <img
+                  class="w-16 h-16 rounded-xl object-cover border border-zinc-100"
+                  data-alt="clean top-down shot of a silver laptop on a minimalist white desk with a small green succulent plant"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzWLpOBla1RyxiSn1hJKRW0Turpx45lER-I--ANwXLPBGaNJ4IXzlp6jC_k2AFybLXq4OL-lEcns1O_PtQqD0QzKsQtF8AYLuxWLpTReq6uFZyHkA6eys5UprPPgUVVaVxF1O1PsneVt46kZ6TG7tNdVZ6md2NCLnFiZW7rzvhJgxZYTHaFnKtyLaB805DUyTxSCy4TartBaFE88_AEBRv2-bvGsokwOTU0hp4zh4OUACGUDW0xL4bVbBCG9N1u089FCeoaYYgoLP3"
+                />
+              </div>
+              <div
+                class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ml-2"
+              >
+                <span class="material-symbols-outlined text-zinc-400"
+                  >more_vert</span
+                >
+              </div>
+            </div>
+            <!-- Conversation Row 3 (Unread) -->
+            <div
+              class="group flex items-center gap-4 p-4 md:p-6 hover:bg-zinc-50 transition-colors cursor-pointer relative"
+            >
+              <div
+                class="absolute left-1.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-primary rounded-full"
+              ></div>
+              <div class="relative flex-shrink-0">
+                <img
+                  class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm"
+                  data-alt="portrait of a creative professional woman with vibrant blue hair and a yellow sweater, modern urban background"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5Vqc19leHynz5AklcxjjxcpFBZvFObHMxSbBObN9T0CNhUD2rWRUdI5vrB3kBbyY-YnRXdZoy2jlngGz-KV6WfiP7ALAlSBexcJiXRAy05RSTnYedt20-7XfZ_A8M2YC1OV4IWDQufZKGNDwNa5wUAtJSepPOm6IrR4up5ONALamXNlswH9WKi6XQauDlAJgtfhrwVbnlNH1giGWGaifi65nmdyWoGaw-HjHZ2XB2H5sHJf6YDQrBUkW9c9G4R6EwD3mGPozbEvjH"
+                />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-1">
+                  <h3 class="font-title-sm text-on-surface truncate pr-2">
+                    Elena Rodriguez
+                  </h3>
+                  <span
+                    class="font-label-bold text-label-bold text-primary whitespace-nowrap"
+                    >10:12 AM</span
+                  >
+                </div>
+                <div class="flex items-center gap-1 mb-1">
+                  <span
+                    class="font-label-bold text-[10px] uppercase tracking-wider text-zinc-400"
+                    >Discussion on:</span
+                  >
+                  <span
+                    class="font-label-bold text-[10px] uppercase tracking-wider text-secondary truncate"
+                    >Mid-Century Modern Armchair</span
+                  >
+                </div>
+                <p class="text-body-sm font-medium text-on-surface truncate">
+                  Sent you the location pin. See you at the corner of 5th Ave.
+                </p>
+              </div>
+              <div class="flex-shrink-0 hidden sm:block">
+                <img
+                  class="w-16 h-16 rounded-xl object-cover border border-zinc-100"
+                  data-alt="stylish mid-century modern armchair in teal fabric with tapered wooden legs in a sunlit corner"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAflhZsvsNVLdV16K9BFG1aK-d01Ez3SGdlqplShHofGGs7To-PgWdGYr94bevpvM4EYXUbC7xgw5lA1h3LTupKL5sBVXeXAxRopUkOhZgjOA2xI58jZSQFnLL3XFZKmP0yoO-QHVH-E8vN-UqgCLHE2KhKj_JuZsarO3_ktiPspsMgMpAc_kyXne7mu_TpNGzEi4bb0GtdgJqvBgqUvz8joOPfJe-lPQ7cpccvDuggS7RlHKTnXlaZLU09fnpKVV0cYkB8CXDARAR1"
+                />
+              </div>
+              <div
+                class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ml-2"
+              >
+                <span class="material-symbols-outlined text-zinc-400"
+                  >more_vert</span
+                >
+              </div>
+            </div>
+            <!-- Conversation Row 4 -->
+            <div
+              class="group flex items-center gap-4 p-4 md:p-6 hover:bg-zinc-50 transition-colors cursor-pointer"
+            >
+              <div class="relative flex-shrink-0">
+                <img
+                  class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm"
+                  data-alt="friendly older man with grey hair and a flannel shirt standing in a sunny backyard workshop"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYpv0xnKe7iBcn8SbXEiC9f2G_WP6JM_E0u1h2KZEeFm55vePJO3j8pIdeoHzdKZgyQbb9nl9CXCrqpnpUJrrFup5wEh8Df34fmM4wMuGDf4VFApZOU1OKdpmoxbLRmaINvEV9utVbCI9CI3PfvFexvrnRq614h6V_p91R_CqaxDHzHPVqMy8iCbavrbCBjl4RBDqE2e0F0w5c4KrrIHA46XtD4DsgggOZGExCvK3mxAEhIRGvrD8Fxwy6T-xxc_-AOJpxKmfXgT8L"
+                />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-1">
+                  <h3 class="font-title-sm text-on-surface truncate pr-2">
+                    David Miller
+                  </h3>
+                  <span
+                    class="font-label-bold text-label-bold text-zinc-400 whitespace-nowrap"
+                    >Oct 12</span
+                  >
+                </div>
+                <div class="flex items-center gap-1 mb-1">
+                  <span
+                    class="font-label-bold text-[10px] uppercase tracking-wider text-zinc-400"
+                    >Discussion on:</span
+                  >
+                  <span
+                    class="font-label-bold text-[10px] uppercase tracking-wider text-secondary truncate"
+                    >Mountain Bike - 29" Wheels</span
+                  >
+                </div>
+                <p class="text-body-sm text-zinc-500 truncate">
+                  Is this still available for a test ride this weekend?
+                </p>
+              </div>
+              <div class="flex-shrink-0 hidden sm:block">
+                <img
+                  class="w-16 h-16 rounded-xl object-cover border border-zinc-100"
+                  data-alt="rugged black mountain bike leaning against a pine tree in a forest setting with dappled light"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVhExQoNd9-46ZVrRjEF79Z35KTOqLs_yWq9hDEko90N3ta1IcKPV-0cRQVybItndxi2ZAnzi4ado1oE_fBFKEgczFWbYN_RVMCefVu8KuG4edbS8rLE_hzD1GSKVmKN-t1IoJzismiRAH3-_EDjiR3vSpMleMwoJImXAF58_180luY2zovIQx3QjeVf0N-j0SPMyzDiV412ty4j-vhsIH3h4rHDgNWuNq6a3YvWIG1WLBp6MVQ1owBI1p-CeV9T2-q749UZjF7QwI"
+                />
+              </div>
+              <div
+                class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ml-2"
+              >
+                <span class="material-symbols-outlined text-zinc-400"
+                  >more_vert</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 pb-safe bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-800 shadow-[0_-2px_10px_rgba(0,0,0,0.04)] z-50 md:hidden"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined">home</span>
+        <span
+          class="text-[11px] font-medium font-sans uppercase tracking-wider mt-1"
+          >Home</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined">add_box</span>
+        <span
+          class="text-[11px] font-medium font-sans uppercase tracking-wider mt-1"
+          >Post Ad</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-green-700 dark:text-green-400 bg-green-50/50 dark:bg-green-900/20 rounded-xl py-1 px-4 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >chat_bubble</span
+        >
+        <span
+          class="text-[11px] font-medium font-sans uppercase tracking-wider mt-1"
+          >Inbox</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined">person</span>
+        <span
+          class="text-[11px] font-medium font-sans uppercase tracking-wider mt-1"
+          >Profile</span
+        >
+      </a>
+    </nav>
+  </body>
+</html>

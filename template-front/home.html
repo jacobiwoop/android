@@ -1,0 +1,859 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#abf4ac",
+              "on-tertiary-fixed-variant": "#07521d",
+              "surface-bright": "#f9f9f9",
+              "on-tertiary-fixed": "#002107",
+              "on-tertiary-container": "#c7ffc5",
+              "on-secondary-fixed-variant": "#005313",
+              "inverse-primary": "#88d982",
+              surface: "#f9f9f9",
+              "error-container": "#ffdad6",
+              outline: "#707a6c",
+              background: "#f9f9f9",
+              "surface-container-low": "#f3f3f3",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#002204",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-container": "#91f78e",
+              primary: "#0d631b",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              secondary: "#006e1c",
+              "on-secondary-container": "#00731e",
+              "surface-container": "#eeeeee",
+              "surface-dim": "#dadada",
+              tertiary: "#1d622b",
+              "secondary-fixed-dim": "#78dc77",
+              "secondary-fixed": "#94f990",
+              "primary-fixed-dim": "#88d982",
+              "on-primary-container": "#cbffc2",
+              "on-primary-fixed-variant": "#005312",
+              "on-background": "#1a1c1c",
+              "on-error": "#ffffff",
+              error: "#ba1a1a",
+              "on-surface": "#1a1c1c",
+              "on-primary-fixed": "#002204",
+              "outline-variant": "#bfcaba",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "inverse-surface": "#2f3131",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#a3f69c",
+              "surface-tint": "#1b6d24",
+              "on-surface-variant": "#40493d",
+              "tertiary-container": "#387b41",
+              "tertiary-fixed-dim": "#90d792",
+              "primary-container": "#2e7d32",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "container-max": "1280px",
+              xl: "64px",
+              base: "8px",
+              lg: "40px",
+              md: "24px",
+              sm: "12px",
+              gutter: "20px",
+              xs: "4px",
+            },
+            fontFamily: {
+              "headline-md": ["Inter"],
+              "body-md": ["Inter"],
+              "body-sm": ["Inter"],
+              "title-sm": ["Inter"],
+              "display-lg": ["Inter"],
+              "label-bold": ["Inter"],
+            },
+            fontSize: {
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+              "title-sm": ["18px", { lineHeight: "1.4", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-bold": ["12px", { lineHeight: "1", fontWeight: "700" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        vertical-align: middle;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md min-h-screen pb-24"
+  >
+    <!-- TopAppBar -->
+    <header
+      class="bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 shadow-sm dark:shadow-none docked full-width top-0 sticky z-40"
+    >
+      <div
+        class="flex items-center justify-between px-4 h-16 w-full max-w-[1280px] mx-auto"
+      >
+        <div class="flex items-center gap-4">
+          <button
+            class="text-green-700 dark:text-green-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors active:opacity-70 p-2 rounded-full"
+          >
+            <span class="material-symbols-outlined" data-icon="menu">menu</span>
+          </button>
+          <h1
+            class="text-xl font-bold text-green-700 dark:text-green-500 font-sans tracking-tight"
+          >
+            Marketplace
+          </h1>
+        </div>
+        <div class="flex-1 max-w-xl mx-8 hidden md:block">
+          <div class="relative group">
+            <span
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none"
+              placeholder="Search for anything..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            class="md:hidden text-green-700 dark:text-green-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors active:opacity-70 p-2 rounded-full"
+          >
+            <span class="material-symbols-outlined" data-icon="search"
+              >search</span
+            >
+          </button>
+          <button
+            class="text-green-700 dark:text-green-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors active:opacity-70 p-2 rounded-full"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="max-w-[1280px] mx-auto px-4 lg:px-gutter">
+      <!-- Mobile Search Bar -->
+      <div class="mt-4 md:hidden">
+        <div class="relative">
+          <span
+            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
+            data-icon="search"
+            >search</span
+          >
+          <input
+            class="w-full bg-white border border-outline-variant rounded-xl py-3 pl-12 pr-4 shadow-sm focus:ring-2 focus:ring-primary outline-none"
+            placeholder="Find electronics, cars, houses..."
+            type="text"
+          />
+        </div>
+      </div>
+      <!-- Categories Section -->
+      <section class="mt-lg">
+        <div class="flex items-center justify-between mb-sm">
+          <h2 class="font-headline-md text-headline-md text-on-background">
+            Categories
+          </h2>
+          <button
+            class="text-primary font-label-bold text-label-bold hover:underline"
+          >
+            See All
+          </button>
+        </div>
+        <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-xs">
+          <div
+            class="flex-none flex flex-col items-center gap-2 group cursor-pointer"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-zinc-100 flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-2xl"
+                data-icon="devices"
+                >devices</span
+              >
+            </div>
+            <span class="font-label-bold text-label-bold">Electronics</span>
+          </div>
+          <div
+            class="flex-none flex flex-col items-center gap-2 group cursor-pointer"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-zinc-100 flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-2xl"
+                data-icon="directions_car"
+                >directions_car</span
+              >
+            </div>
+            <span class="font-label-bold text-label-bold">Vehicles</span>
+          </div>
+          <div
+            class="flex-none flex flex-col items-center gap-2 group cursor-pointer"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-zinc-100 flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-2xl"
+                data-icon="home_work"
+                >home_work</span
+              >
+            </div>
+            <span class="font-label-bold text-label-bold">Property</span>
+          </div>
+          <div
+            class="flex-none flex flex-col items-center gap-2 group cursor-pointer"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-zinc-100 flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-all"
+            >
+              <span class="material-symbols-outlined text-2xl" data-icon="chair"
+                >chair</span
+              >
+            </div>
+            <span class="font-label-bold text-label-bold">Furniture</span>
+          </div>
+          <div
+            class="flex-none flex flex-col items-center gap-2 group cursor-pointer"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-zinc-100 flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-all"
+            >
+              <span class="material-symbols-outlined text-2xl" data-icon="work"
+                >work</span
+              >
+            </div>
+            <span class="font-label-bold text-label-bold">Jobs</span>
+          </div>
+          <div
+            class="flex-none flex flex-col items-center gap-2 group cursor-pointer"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-zinc-100 flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-all"
+            >
+              <span class="material-symbols-outlined text-2xl" data-icon="pets"
+                >pets</span
+              >
+            </div>
+            <span class="font-label-bold text-label-bold">Pets</span>
+          </div>
+          <div
+            class="flex-none flex flex-col items-center gap-2 group cursor-pointer"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-zinc-100 flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-2xl"
+                data-icon="styler"
+                >styler</span
+              >
+            </div>
+            <span class="font-label-bold text-label-bold">Fashion</span>
+          </div>
+        </div>
+      </section>
+      <!-- Top Deals Carousel -->
+      <section class="mt-lg">
+        <h2 class="font-headline-md text-headline-md text-on-background mb-md">
+          Top Deals
+        </h2>
+        <div
+          class="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory"
+        >
+          <!-- Large Item -->
+          <div
+            class="flex-none w-[280px] md:w-[600px] h-[350px] relative rounded-2xl overflow-hidden shadow-sm group cursor-pointer snap-start"
+          >
+            <img
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              data-alt="luxury modern house exterior"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLXnxO0IbHWM9pbYn-niZ7DuzVWXeKY_cPu71LJbdgNJN9SUgYig_IfrlTuYfAl5pf8ODfPR6XhuhOhTv4dOv25OG70mi58TS8qNeoBwblf32gklFukqoBsvlTO0pDuhlovGq9vhyPItIhRybvCF8FVkFh5BiuPlxDv4nDH3-Uxzm_lBlthGxQnlQ7vh9QsdMv4Ez40K2_ChVbqLAv-PD0XhNOL1JBQMdKO0rNOMwgKFlgoEE4zIgcu8UUS88dJyFDpSuCyIrTP8Pe"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <span
+                class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-bold text-[10px] uppercase mb-2 inline-block"
+                >Featured Property</span
+              >
+              <h3 class="font-title-sm text-xl md:text-2xl mb-1">
+                Modern Villa in Suburbs
+              </h3>
+              <p class="font-headline-md text-primary-fixed">$850,000</p>
+            </div>
+          </div>
+          <!-- Car Item -->
+          <div
+            class="flex-none w-[220px] md:w-[300px] h-[350px] relative rounded-2xl overflow-hidden shadow-sm group cursor-pointer snap-start"
+          >
+            <img
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              data-alt="luxury sedan car"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrQFiDQfUi2iUGg9d3ifzYoSIr6jI8RgE6haw8KfuWFXrzvJ0GbXHaA-JQnDpyFf7MOq-tVKOZVt9sMOUonhvCnRz-zyGf83jZXr8yhx1_MsT9jQ9X_1Pl2ApnBDS3JdGO9yl-KVwR6mlyRrvnPfBawdG4lFc2vbeluNrTiJfIMi_LiguzqLcsKGLwrAgfyCRKUarWl7mrQGoKQr2qczrVsA2R5JqeDZA5ARwEZLYEgpJ7fJozDkZdfv2iz6rkDYvd241ydhQ13eyJ"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="font-title-sm text-title-sm mb-1">
+                Luxury Sedan 2024
+              </h3>
+              <p class="font-body-md text-primary-fixed font-bold">$42,500</p>
+            </div>
+          </div>
+          <!-- Watch Item -->
+          <div
+            class="flex-none w-[220px] md:w-[300px] h-[350px] relative rounded-2xl overflow-hidden shadow-sm group cursor-pointer snap-start"
+          >
+            <img
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              data-alt="classic timepiece"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsACM7BCTr1DdTIa7zCLSje2nAO5TNfoQVOMvb-nydTTmmPJeg8JOKehVgWHj0shFphpvIN1PhubcICln-OqC9PScfz1rq2GRRE8rFHdXnIHBi-C4TRn7CRaE_XAV88VvHX4vmy2BxEfpVLVYm5l7YBi8WQKmg5ENCIXNp49jV8A9laY_TXzECo1VJ4f7yz1PwjQDeOSFZiuTGsPaBT0DtlDTQlj8YNTMBhMqxzKbeAf2Zx8qoE8yFnLrhCBoli-ONeutoDe0pHKSc"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="font-title-sm text-title-sm mb-1">
+                Classic Timepiece
+              </h3>
+              <p class="font-body-md text-primary-fixed font-bold">$299</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Latest Ads Feed -->
+      <section class="mt-lg">
+        <div class="flex items-center justify-between mb-md">
+          <h2 class="font-headline-md text-headline-md text-on-background">
+            Latest Ads
+          </h2>
+          <div class="flex gap-2">
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 bg-white border border-outline-variant rounded-full text-xs font-medium hover:bg-zinc-50 transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-base"
+                data-icon="filter_list"
+                >filter_list</span
+              >
+              Filters
+            </button>
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 bg-white border border-outline-variant rounded-full text-xs font-medium hover:bg-zinc-50 transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-base"
+                data-icon="swap_vert"
+                >swap_vert</span
+              >
+              Sort
+            </button>
+          </div>
+        </div>
+        <!-- Feed Grid - 2 Column Layout for Mobile & Tablet -->
+        <div
+          class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6"
+        >
+          <!-- Ad Card 1 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-sm border border-transparent hover:border-tertiary-container hover:shadow-md transition-all group"
+          >
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                data-alt="modern laptop"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCePbaWNBP4Me8Og_gZZnW_mqRlAKzPFYfiLkSLGwpTKnlPYeIjb-ZHmdLhlTyC1J7fwgglSn4BOwDd4zQK5QM_aggfvHnTAzFBmEoe0MAv0g2LVN-HQtAg_u9vVLhHyu_H1-ylfNgz-LCcnosnGPs9J8V8n3HthhzEXQ0eINl3OpmxpzIkg2rqNpYM66roEf71sI3k1zvHr8NpNAjQoj6iq0vGWCi8FcwG4wmno1V-FzJTCNOL8UWoqnOmqXXMvbQoajG8iU5UIi62"
+              />
+              <button
+                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  data-icon="favorite"
+                  >favorite</span
+                >
+              </button>
+            </div>
+            <div class="p-3">
+              <span
+                class="text-secondary font-label-bold text-[10px] uppercase tracking-wider"
+                >Electronics</span
+              >
+              <h3
+                class="font-body-sm text-sm font-semibold mt-1 text-on-background line-clamp-1"
+              >
+                Pro Laptop 16"
+              </h3>
+              <p class="font-bold text-secondary mt-1 text-base">$1,200</p>
+              <div
+                class="mt-2 flex items-center justify-between text-on-surface-variant text-[10px]"
+              >
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-xs"
+                    data-icon="location_on"
+                    >location_on</span
+                  >
+                  <span>Downtown</span>
+                </div>
+                <span>2h ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- Ad Card 2 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-sm border border-transparent hover:border-tertiary-container hover:shadow-md transition-all group"
+          >
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                data-alt="luxury SUV"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAav9RLTNICN65RwcGKfQIdrBkNgxD0Q4KpnHK9cCsNOU1xjGuanyCaBtd3zEPj524242twpenfv1IkVrN7_3PrSiNIt_uNBQpIuIXCUljGDC6ZtfiUuvZev3434mlKwF9DOs9WhkuF6xQ4u2Wa0BgPQhXJ37zc-JnvEzrDuqEKwFCIqQKK9avlRtgbXhNSwTrJXonTqPcLQ-rqn6oSGau7Z_qQmNZTXbkd7__KiA8uSUeV95Nd8-bPKGfGvkN01Ug0sffBdSfeZjZL"
+              />
+              <button
+                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  data-icon="favorite"
+                  >favorite</span
+                >
+              </button>
+            </div>
+            <div class="p-3">
+              <span
+                class="text-secondary font-label-bold text-[10px] uppercase tracking-wider"
+                >Vehicles</span
+              >
+              <h3
+                class="font-body-sm text-sm font-semibold mt-1 text-on-background line-clamp-1"
+              >
+                2021 Luxury SUV
+              </h3>
+              <p class="font-bold text-secondary mt-1 text-base">$35,900</p>
+              <div
+                class="mt-2 flex items-center justify-between text-on-surface-variant text-[10px]"
+              >
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-xs"
+                    data-icon="location_on"
+                    >location_on</span
+                  >
+                  <span>Westside</span>
+                </div>
+                <span>5h ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- Ad Card 3 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-sm border border-transparent hover:border-tertiary-container hover:shadow-md transition-all group"
+          >
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                data-alt="velvet chair"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP0xSZIqFVaapyxCksjLJAse478JHR6UUX1ssesB-uEH1orzLLH7vD58bsbDjHBbHVDor-cXVUSaO77UpYq5x9v9uJ1LPeOaWiZ8OQn25tytop61imATuZUqGQp99kRWSH3YjRpzLxeGPP5C-k1jNPo-jybAhuikHt6hKcGiqpGdMYOPgO_k0jwSB1Oq10kwHijFOWxvdbMmmzYilHh2jJo-0zsNynQKdrqPqkVavI9mSsld3cowdgdvJEUX-2GnC1CgZW6LBLd7Ox"
+              />
+              <button
+                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  data-icon="favorite"
+                  >favorite</span
+                >
+              </button>
+            </div>
+            <div class="p-3">
+              <span
+                class="text-secondary font-label-bold text-[10px] uppercase tracking-wider"
+                >Furniture</span
+              >
+              <h3
+                class="font-body-sm text-sm font-semibold mt-1 text-on-background line-clamp-1"
+              >
+                Velvet Accent Chair
+              </h3>
+              <p class="font-bold text-secondary mt-1 text-base">$150</p>
+              <div
+                class="mt-2 flex items-center justify-between text-on-surface-variant text-[10px]"
+              >
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-xs"
+                    data-icon="location_on"
+                    >location_on</span
+                  >
+                  <span>Old Town</span>
+                </div>
+                <span>1d ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- Ad Card 4 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-sm border border-transparent hover:border-tertiary-container hover:shadow-md transition-all group"
+          >
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                data-alt="headphones"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOwuBlolSF6BkiGGM6YrqkXG-VHvGks_W6p2bQWvBUgGz_mu0AiR6zbEu91ptd0O25XHKXJkGTgtT1Ujwlc8PqhteuZqI1kYqpoY2p1h7namNe5zwJyyrL4045XZv_CGY1pOJ5VRjeDNIXK4XnALlqWUHxvU5-vmgtP6HKWa1lHO5q2s4Fp2MBjF2WM6GCBCYs1KoRXCKcKZGOwPtiJTPN8kMnY8WBRdTqWB89Iy5zSrO6JaGX-SF8gO8KOylRgD6Ca-t987EGx99L"
+              />
+              <button
+                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  data-icon="favorite"
+                  >favorite</span
+                >
+              </button>
+            </div>
+            <div class="p-3">
+              <span
+                class="text-secondary font-label-bold text-[10px] uppercase tracking-wider"
+                >Electronics</span
+              >
+              <h3
+                class="font-body-sm text-sm font-semibold mt-1 text-on-background line-clamp-1"
+              >
+                Wireless Headphones
+              </h3>
+              <p class="font-bold text-secondary mt-1 text-base">$185</p>
+              <div
+                class="mt-2 flex items-center justify-between text-on-surface-variant text-[10px]"
+              >
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-xs"
+                    data-icon="location_on"
+                    >location_on</span
+                  >
+                  <span>Suburbia</span>
+                </div>
+                <span>3h ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- Ad Card 5 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-sm border border-transparent hover:border-tertiary-container hover:shadow-md transition-all group"
+          >
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                data-alt="leather bag"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYHpW4Lyq9hiBdf8GnE9gdQQBrGKCF_YcRel-Scm0-2bDOQE--YCRkp18f2L82llcGsygTxicT5DWYQ2krspsgyhuBoMGKL8VQncl42HFW70DXEsvhOVj8_tkcTcwJA1MX5TPqJ9Wu_ABruYDwq2muRlcciCEUdaQ7X6fgZys2XqHsHNBy9oaD445P9hrVgvq8hCMTMhUpxVBKVU--xIjhb7uX0X2M53GrjhrJyeaA9FSBTix0rDnYFAyE1mXtNYLA_CzzI_bF-nla"
+              />
+              <button
+                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  data-icon="favorite"
+                  >favorite</span
+                >
+              </button>
+            </div>
+            <div class="p-3">
+              <span
+                class="text-secondary font-label-bold text-[10px] uppercase tracking-wider"
+                >Fashion</span
+              >
+              <h3
+                class="font-body-sm text-sm font-semibold mt-1 text-on-background line-clamp-1"
+              >
+                Vintage Leather Bag
+              </h3>
+              <p class="font-bold text-secondary mt-1 text-base">$85</p>
+              <div
+                class="mt-2 flex items-center justify-between text-on-surface-variant text-[10px]"
+              >
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-xs"
+                    data-icon="location_on"
+                    >location_on</span
+                  >
+                  <span>Central</span>
+                </div>
+                <span>6h ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- Ad Card 6 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-sm border border-transparent hover:border-tertiary-container hover:shadow-md transition-all group"
+          >
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                data-alt="camera"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBExTyWNbqr4ZV3DSlbnL2sQlSRq0h3OPT-ZaYN9pTycAxQMjXKQRURCAOZH4cQofgt_yDnWM4Fd_z1OEEKGVk8DSivBJeQPukKhKXurVGwJRMiWG1c7xzcaZIYBD0HmOdYRamAkzOhqB5TI7trGgN19dQf_4N9-Cz5qAl4vnws7XKzGU-eYiLL_2xmNHUopo9NtEbM2eBXQvjNacGyjYCmr9g3gl5mAXgguDEc2cwMaTd4IcnKY1P-ZK-VU5HdC0mb0yQ5K_Ml0heG"
+              />
+              <button
+                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  data-icon="favorite"
+                  >favorite</span
+                >
+              </button>
+            </div>
+            <div class="p-3">
+              <span
+                class="text-secondary font-label-bold text-[10px] uppercase tracking-wider"
+                >Electronics</span
+              >
+              <h3
+                class="font-body-sm text-sm font-semibold mt-1 text-on-background line-clamp-1"
+              >
+                4K Digital Camera
+              </h3>
+              <p class="font-bold text-secondary mt-1 text-base">$2,450</p>
+              <div
+                class="mt-2 flex items-center justify-between text-on-surface-variant text-[10px]"
+              >
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-xs"
+                    data-icon="location_on"
+                    >location_on</span
+                  >
+                  <span>Riverside</span>
+                </div>
+                <span>4h ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- Ad Card 7 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-sm border border-transparent hover:border-tertiary-container hover:shadow-md transition-all group"
+          >
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                data-alt="monitor"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8EVgCc8a_CVu88tY23X9Op8HvUMMPmqoyQp_NHyZpkHL-k1SbbgBgCD3Vyqy3NuX2VRJCqOPpctgalE_nPZoqFE5wnbY9-oVDEGED8uV7DRIU3xObJPPvFapRk8fZN_znvfbhkOFmjOAM-DOw8xxYnMtniMjUxHMnjAgW87tJZnJb-QND2MQEmsAx9y-ucPW4E2npb-sX4qi-VohwNesmtFFViJkcP8wp3_7gC906K2OMIpuKzrno9QEETo82D-9lLaHlEwPJD3lk"
+              />
+              <button
+                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  data-icon="favorite"
+                  >favorite</span
+                >
+              </button>
+            </div>
+            <div class="p-3">
+              <span
+                class="text-secondary font-label-bold text-[10px] uppercase tracking-wider"
+                >Electronics</span
+              >
+              <h3
+                class="font-body-sm text-sm font-semibold mt-1 text-on-background line-clamp-1"
+              >
+                34" Curved Monitor
+              </h3>
+              <p class="font-bold text-secondary mt-1 text-base">$420</p>
+              <div
+                class="mt-2 flex items-center justify-between text-on-surface-variant text-[10px]"
+              >
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-xs"
+                    data-icon="location_on"
+                    >location_on</span
+                  >
+                  <span>Tech Park</span>
+                </div>
+                <span>12h ago</span>
+              </div>
+            </div>
+          </div>
+          <!-- Ad Card 8 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-sm border border-transparent hover:border-tertiary-container hover:shadow-md transition-all group"
+          >
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                data-alt="dishes"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM9lZHqHeJIc3jE78ZGL-pMiRwe9pByDrSuYf3-hiSTJp-Gih1cJE9fjb9BmGm9FLbnxJSz-95C51L794MkhGeilfz9gCWR8Dcho1peLU7zxpJ5I63bA2zhDocPLkIIFc4Qe5xS8sIZ9movJOF0m-T0YUN6J52N6Fny87VnyN2S0STgXK652dROVturX0sJ_4ZxOcaqgvgpYRLlJnVTyVekMRtlmZ49DBzSSuBLbI_DAVbwPhJTDWeI1LoSiruxOyc_OcNIoutQP34"
+              />
+              <button
+                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-base"
+                  data-icon="favorite"
+                  >favorite</span
+                >
+              </button>
+            </div>
+            <div class="p-3">
+              <span
+                class="text-secondary font-label-bold text-[10px] uppercase tracking-wider"
+                >Home</span
+              >
+              <h3
+                class="font-body-sm text-sm font-semibold mt-1 text-on-background line-clamp-1"
+              >
+                Ceramic Dinnerware
+              </h3>
+              <p class="font-bold text-secondary mt-1 text-base">$45</p>
+              <div
+                class="mt-2 flex items-center justify-between text-on-surface-variant text-[10px]"
+              >
+                <div class="flex items-center gap-1">
+                  <span
+                    class="material-symbols-outlined text-xs"
+                    data-icon="location_on"
+                    >location_on</span
+                  >
+                  <span>East End</span>
+                </div>
+                <span>2d ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination/Load More -->
+        <div class="mt-xl flex justify-center pb-12">
+          <button
+            class="px-8 py-3 bg-primary text-on-primary rounded-full font-headline-md text-headline-md hover:bg-tertiary transition-all shadow-md active:scale-95"
+          >
+            Load More Items
+          </button>
+        </div>
+      </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 pb-safe bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-800 shadow-[0_-2px_10px_rgba(0,0,0,0.04)] z-50"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-green-700 dark:text-green-400 bg-green-50/50 dark:bg-green-900/20 rounded-xl py-1 px-4 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined"
+          data-icon="home"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >home</span
+        >
+        <span
+          class="text-[11px] font-medium font-sans uppercase tracking-wider mt-1"
+          >Home</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="add_box"
+          >add_box</span
+        >
+        <span
+          class="text-[11px] font-medium font-sans uppercase tracking-wider mt-1"
+          >Post Ad</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="chat_bubble"
+          >chat_bubble</span
+        >
+        <span
+          class="text-[11px] font-medium font-sans uppercase tracking-wider mt-1"
+          >Inbox</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span
+          class="text-[11px] font-medium font-sans uppercase tracking-wider mt-1"
+          >Profile</span
+        >
+      </a>
+    </nav>
+    <!-- Floating Action Button -->
+    <button
+      class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:bg-tertiary transition-all active:scale-90 md:bottom-12"
+    >
+      <span class="material-symbols-outlined text-2xl" data-icon="add"
+        >add</span
+      >
+    </button>
+  </body>
+</html>

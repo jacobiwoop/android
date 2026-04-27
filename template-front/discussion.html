@@ -1,0 +1,406 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Chat with Seller - Marketplace</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f9f9f9;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#abf4ac",
+              "on-tertiary-fixed-variant": "#07521d",
+              "surface-bright": "#f9f9f9",
+              "on-tertiary-fixed": "#002107",
+              "on-tertiary-container": "#c7ffc5",
+              "on-secondary-fixed-variant": "#005313",
+              "inverse-primary": "#88d982",
+              surface: "#f9f9f9",
+              "error-container": "#ffdad6",
+              outline: "#707a6c",
+              background: "#f9f9f9",
+              "surface-container-low": "#f3f3f3",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#002204",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-container": "#91f78e",
+              primary: "#0d631b",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              secondary: "#006e1c",
+              "on-secondary-container": "#00731e",
+              "surface-container": "#eeeeee",
+              "surface-dim": "#dadada",
+              tertiary: "#1d622b",
+              "secondary-fixed-dim": "#78dc77",
+              "secondary-fixed": "#94f990",
+              "primary-fixed-dim": "#88d982",
+              "on-primary-container": "#cbffc2",
+              "on-primary-fixed-variant": "#005312",
+              "on-background": "#1a1c1c",
+              "on-error": "#ffffff",
+              error: "#ba1a1a",
+              "on-surface": "#1a1c1c",
+              "on-primary-fixed": "#002204",
+              "outline-variant": "#bfcaba",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "inverse-surface": "#2f3131",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#a3f69c",
+              "surface-tint": "#1b6d24",
+              "on-surface-variant": "#40493d",
+              "tertiary-container": "#387b41",
+              "tertiary-fixed-dim": "#90d792",
+              "primary-container": "#2e7d32",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "container-max": "1280px",
+              xl: "64px",
+              base: "8px",
+              lg: "40px",
+              md: "24px",
+              sm: "12px",
+              gutter: "20px",
+              xs: "4px",
+            },
+            fontFamily: {
+              "headline-md": ["Inter"],
+              "body-md": ["Inter"],
+              "body-sm": ["Inter"],
+              "title-sm": ["Inter"],
+              "display-lg": ["Inter"],
+              "label-bold": ["Inter"],
+            },
+            fontSize: {
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+              "title-sm": ["18px", { lineHeight: "1.4", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-bold": ["12px", { lineHeight: "1", fontWeight: "700" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-background min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header
+      class="bg-white dark:bg-zinc-950 docked full-width top-0 sticky z-40 border-b border-zinc-100 dark:border-zinc-800 shadow-sm dark:shadow-none"
+    >
+      <div
+        class="flex items-center justify-between px-4 h-16 w-full max-w-screen-xl mx-auto"
+      >
+        <div class="flex items-center gap-4">
+          <button
+            class="active:opacity-70 transition-opacity p-2 rounded-full hover:bg-zinc-50"
+          >
+            <span class="material-symbols-outlined text-zinc-600"
+              >arrow_back</span
+            >
+          </button>
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <img
+                alt="Seller Profile"
+                class="w-10 h-10 rounded-full object-cover"
+                data-alt="close-up portrait of a professional woman with a friendly expression in a brightly lit studio setting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7yJB0RfYKl0Ni0vqYIGt3ewvbXMOCib9M4LW3kFhDM-ZiNkJ7nVPN0svT8NJbRz7reVmuemeNadjOeqFjmUA01EMze55KsvXXV-QNqTTPXD9sFaJMGq1XVGmLyJiOtaK0fkSIyqIm28y5fSUruTRZFiemqtOL6dJVMUC1-JJuFxpocwreBJ6s4RPWIFDCZoW-78ajGDfXvnLEp_8zBzIVfuepqtnbnO7lODSsy09UqYeMsnrbK2DYhhhZDiwIs9i-C8_z5hWt8m5p"
+              />
+              <span
+                class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"
+              ></span>
+            </div>
+            <div>
+              <h1
+                class="font-sans font-semibold text-lg tracking-tight text-on-surface"
+              >
+                Verified Seller
+              </h1>
+              <p class="font-sans text-xs text-zinc-500">
+                Typically replies within 1 hour
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div
+            class="hidden md:flex items-center bg-surface-container rounded-xl px-3 py-1.5 mr-4 gap-3"
+          >
+            <img
+              alt="Product Thumbnail"
+              class="w-8 h-8 rounded-lg object-cover"
+              data-alt="studio shot of premium black over-ear headphones on a clean minimalist background with soft shadows"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuClSMHCBZvAYFTfLUAshrJYL7QmT5ARzulVu45c7bT23YTWK2GUumRQCWPrIkEMepm85R6cVdCpC_fBm1-zHjTRmIzTincHnpATaz989MOrQ6Md2KPmHwG_o82plKnbyNCiwAHp3FN6HtnPhNtoQZxPDS3u66sti5z9WK03FtA6uF_t73JHChVpw1bVbmH-FFdNhM_movkYMG6Hr9_TdK1emxKPtrxi9xGEbGjyc80Y6BOmftrpQR-GGUInOrCv9vdm5KVwb_CH2G8u"
+            />
+            <div class="text-left">
+              <p
+                class="font-label-bold text-label-bold text-zinc-900 truncate w-32"
+              >
+                Premium Headphones
+              </p>
+              <p class="text-primary font-bold text-xs">$299.00</p>
+            </div>
+          </div>
+          <button
+            class="active:opacity-70 transition-opacity p-2 rounded-full hover:bg-zinc-50"
+          >
+            <span class="material-symbols-outlined text-zinc-600"
+              >more_vert</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- Main Chat Canvas -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 md:p-6 mb-24">
+      <!-- System Date -->
+      <div class="flex justify-center mb-8">
+        <span
+          class="bg-surface-container-highest text-on-surface-variant font-label-bold text-label-bold px-3 py-1 rounded-full"
+          >TODAY</span
+        >
+      </div>
+      <div class="space-y-6">
+        <!-- Seller Message Group -->
+        <div class="flex flex-col items-start max-w-[85%] md:max-w-[70%]">
+          <div class="flex items-end gap-2">
+            <div
+              class="bg-zinc-200 dark:bg-zinc-800 text-on-surface rounded-2xl rounded-bl-none px-4 py-3 shadow-sm"
+            >
+              <p class="font-body-md text-body-md">
+                Hi! I saw you were interested in the headphones. They are still
+                available and in perfect condition.
+              </p>
+            </div>
+          </div>
+          <span class="text-[10px] text-zinc-400 mt-1 ml-2">10:42 AM</span>
+        </div>
+        <!-- User Message Group -->
+        <div class="flex flex-col items-end ml-auto max-w-[85%] md:max-w-[70%]">
+          <div class="flex items-end gap-2">
+            <div
+              class="bg-primary text-on-primary rounded-2xl rounded-br-none px-4 py-3 shadow-sm"
+            >
+              <p class="font-body-md text-body-md">
+                That's great! Does it come with the original warranty or the
+                receipt?
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mt-1 mr-2">
+            <span class="text-[10px] text-zinc-400">10:45 AM</span>
+            <span
+              class="material-symbols-outlined text-[12px] text-primary"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >done_all</span
+            >
+          </div>
+        </div>
+        <!-- Product Context Card (In-Chat) -->
+        <div class="flex justify-center my-8">
+          <div
+            class="bg-white border border-zinc-100 rounded-2xl p-4 flex gap-4 max-w-sm shadow-sm"
+          >
+            <img
+              alt="Headphones"
+              class="w-20 h-20 rounded-xl object-cover"
+              data-alt="sleek modern wireless headphones in matte black finish on a neutral gray surface"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnn7Jagpwm3asv4uqHKbFJCPsERaZvDMlWL0b4DbevqQBOie6pxakPw6eliam4arMNeEyLWdYtSNtEQKnhPdo3Qc8DOs9x8WFdKPmkGfmU56Q4ZHRABYiHAWVYW9N07fdcWsh2warWGprZkyN7Ht8MD_4oDCMBxkpaKTS9A0-emsTecqf7U9fMgQhoU2-5yqZSoB7lFb_YCNrpkdxzA5y-y2WGnS2rZLB7w9RjkBEEzf9a1bWdTmGpIgUy1GeETwAoZtaXWLx5J7vU"
+            />
+            <div class="flex flex-col justify-center">
+              <p class="font-label-bold text-label-bold text-zinc-500">
+                LISTING SUMMARY
+              </p>
+              <h3 class="font-title-sm text-title-sm text-on-surface">
+                Premium Headphones
+              </h3>
+              <p class="font-bold text-primary">$299.00</p>
+            </div>
+          </div>
+        </div>
+        <!-- Seller Message Group -->
+        <div class="flex flex-col items-start max-w-[85%] md:max-w-[70%]">
+          <div class="flex items-end gap-2">
+            <div
+              class="bg-zinc-200 dark:bg-zinc-800 text-on-surface rounded-2xl rounded-bl-none px-4 py-3 shadow-sm"
+            >
+              <p class="font-body-md text-body-md">
+                Yes, I have the original receipt from 3 months ago. It has 9
+                months of manufacturer warranty remaining. I can send a photo if
+                you'd like?
+              </p>
+            </div>
+          </div>
+          <span class="text-[10px] text-zinc-400 mt-1 ml-2">10:48 AM</span>
+        </div>
+        <!-- User Message Group -->
+        <div class="flex flex-col items-end ml-auto max-w-[85%] md:max-w-[70%]">
+          <div class="flex items-end gap-2">
+            <div
+              class="bg-primary text-on-primary rounded-2xl rounded-br-none px-4 py-3 shadow-sm"
+            >
+              <p class="font-body-md text-body-md">
+                Yes please! Also, would you be open to meeting at the Downtown
+                Plaza for the exchange?
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mt-1 mr-2">
+            <span class="text-[10px] text-zinc-400">10:52 AM</span>
+            <span
+              class="material-symbols-outlined text-[12px] text-primary"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >done_all</span
+            >
+          </div>
+        </div>
+        <!-- Seller Typing Indicator -->
+        <div class="flex items-center gap-2 opacity-60">
+          <div class="flex gap-1 bg-zinc-100 rounded-full px-3 py-2">
+            <div class="w-1.5 h-1.5 bg-zinc-400 rounded-full"></div>
+            <div class="w-1.5 h-1.5 bg-zinc-400 rounded-full"></div>
+            <div class="w-1.5 h-1.5 bg-zinc-400 rounded-full"></div>
+          </div>
+          <span class="text-[10px] font-medium text-zinc-400"
+            >Verified Seller is typing...</span
+          >
+        </div>
+      </div>
+    </main>
+    <!-- Chat Input Area -->
+    <div
+      class="fixed bottom-0 left-0 w-full bg-white border-t border-zinc-100 p-4 md:px-8 pb-safe z-50"
+    >
+      <div class="max-w-4xl mx-auto flex items-end gap-3">
+        <button class="p-3 text-zinc-400 hover:text-primary transition-colors">
+          <span class="material-symbols-outlined">add_circle</span>
+        </button>
+        <div class="flex-grow relative">
+          <textarea
+            class="w-full bg-zinc-100 border-none rounded-2xl px-4 py-3 focus:ring-2 focus:ring-primary/20 text-body-md font-body-md resize-none"
+            placeholder="Type a message..."
+            rows="1"
+          ></textarea>
+        </div>
+        <button
+          class="bg-primary text-on-primary p-3 rounded-full shadow-lg active:scale-95 transition-transform"
+        >
+          <span
+            class="material-symbols-outlined"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >send</span
+          >
+        </button>
+      </div>
+    </div>
+    <!-- Quick Action Chips (Floating above Input) -->
+    <div class="fixed bottom-24 left-0 w-full pointer-events-none">
+      <div
+        class="max-w-4xl mx-auto px-4 flex gap-2 overflow-x-auto pb-2 no-scrollbar pointer-events-auto"
+      >
+        <button
+          class="whitespace-nowrap bg-white border border-zinc-200 px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:bg-zinc-50 transition-colors shadow-sm"
+        >
+          Is it still available?
+        </button>
+        <button
+          class="whitespace-nowrap bg-white border border-zinc-200 px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:bg-zinc-50 transition-colors shadow-sm"
+        >
+          What's your best price?
+        </button>
+        <button
+          class="whitespace-nowrap bg-white border border-zinc-200 px-4 py-2 rounded-full text-xs font-medium text-zinc-600 hover:bg-zinc-50 transition-colors shadow-sm"
+        >
+          Can I see more photos?
+        </button>
+      </div>
+    </div>
+    <!-- BottomNavBar (Hidden on desktop, simplified active state) -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 pb-safe bg-white dark:bg-zinc-950 border-t border-zinc-100 hidden"
+    >
+      <div class="flex flex-col items-center justify-center text-zinc-400 py-1">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-[11px] font-medium font-sans uppercase tracking-wider"
+          >Home</span
+        >
+      </div>
+      <div class="flex flex-col items-center justify-center text-zinc-400 py-1">
+        <span class="material-symbols-outlined">add_box</span>
+        <span class="text-[11px] font-medium font-sans uppercase tracking-wider"
+          >Post Ad</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center justify-center text-green-700 dark:text-green-400 bg-green-50/50 dark:bg-green-900/20 rounded-xl py-1 px-4"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >chat_bubble</span
+        >
+        <span class="text-[11px] font-medium font-sans uppercase tracking-wider"
+          >Inbox</span
+        >
+      </div>
+      <div class="flex flex-col items-center justify-center text-zinc-400 py-1">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-[11px] font-medium font-sans uppercase tracking-wider"
+          >Profile</span
+        >
+      </div>
+    </nav>
+  </body>
+</html>

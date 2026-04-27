@@ -1,0 +1,378 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#abf4ac",
+              "on-tertiary-fixed-variant": "#07521d",
+              "surface-bright": "#f9f9f9",
+              "on-tertiary-fixed": "#002107",
+              "on-tertiary-container": "#c7ffc5",
+              "on-secondary-fixed-variant": "#005313",
+              "inverse-primary": "#88d982",
+              surface: "#f9f9f9",
+              "error-container": "#ffdad6",
+              outline: "#707a6c",
+              background: "#f9f9f9",
+              "surface-container-low": "#f3f3f3",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#002204",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-container": "#91f78e",
+              primary: "#0d631b",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              secondary: "#006e1c",
+              "on-secondary-container": "#00731e",
+              "surface-container": "#eeeeee",
+              "surface-dim": "#dadada",
+              tertiary: "#1d622b",
+              "secondary-fixed-dim": "#78dc77",
+              "secondary-fixed": "#94f990",
+              "primary-fixed-dim": "#88d982",
+              "on-primary-container": "#cbffc2",
+              "on-primary-fixed-variant": "#005312",
+              "on-background": "#1a1c1c",
+              "on-error": "#ffffff",
+              error: "#ba1a1a",
+              "on-surface": "#1a1c1c",
+              "on-primary-fixed": "#002204",
+              "outline-variant": "#bfcaba",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "inverse-surface": "#2f3131",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#a3f69c",
+              "surface-tint": "#1b6d24",
+              "on-surface-variant": "#40493d",
+              "tertiary-container": "#387b41",
+              "tertiary-fixed-dim": "#90d792",
+              "primary-container": "#2e7d32",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "container-max": "1280px",
+              xl: "64px",
+              base: "8px",
+              lg: "40px",
+              md: "24px",
+              sm: "12px",
+              gutter: "20px",
+              xs: "4px",
+            },
+            fontFamily: {
+              "headline-md": ["Inter"],
+              "body-md": ["Inter"],
+              "body-sm": ["Inter"],
+              "title-sm": ["Inter"],
+              "display-lg": ["Inter"],
+              "label-bold": ["Inter"],
+            },
+            fontSize: {
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+              "title-sm": ["18px", { lineHeight: "1.4", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-bold": ["12px", { lineHeight: "1", fontWeight: "700" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-background font-body-md antialiased">
+    <!-- TopAppBar from JSON -->
+    <header
+      class="bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 shadow-sm dark:shadow-none docked full-width top-0 sticky z-40"
+    >
+      <div
+        class="flex items-center justify-between px-4 h-16 w-full max-w-container-max mx-auto"
+      >
+        <div class="flex items-center gap-4">
+          <button
+            class="active:opacity-70 transition-opacity p-2 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900"
+          >
+            <span
+              class="material-symbols-outlined text-green-700 dark:text-green-500"
+              data-icon="menu"
+              >menu</span
+            >
+          </button>
+          <h1
+            class="text-xl font-bold text-green-700 dark:text-green-500 font-headline-md tracking-tight"
+          >
+            Marketplace
+          </h1>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            class="active:opacity-70 transition-opacity p-2 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900"
+          >
+            <span
+              class="material-symbols-outlined text-green-700 dark:text-green-500"
+              data-icon="search"
+              >search</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="max-w-3xl mx-auto px-4 py-lg pb-32">
+      <div class="mb-lg">
+        <h2 class="font-display-lg text-display-lg text-on-surface mb-2">
+          Create New Ad
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">
+          Fill in the details below to reach thousands of potential buyers in
+          your area.
+        </p>
+      </div>
+      <!-- Form Container -->
+      <div class="space-y-md">
+        <!-- Step 1: Upload Photos -->
+        <section
+          class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/30"
+        >
+          <div class="flex items-center gap-2 mb-md">
+            <div
+              class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-bold text-label-bold"
+            >
+              1
+            </div>
+            <h3 class="font-headline-md text-headline-md">Upload Photos</h3>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+            <!-- Main Upload Box -->
+            <button
+              class="aspect-square rounded-xl border-2 border-dashed border-primary/30 bg-primary/5 flex flex-col items-center justify-center gap-2 hover:bg-primary/10 transition-colors group"
+            >
+              <span
+                class="material-symbols-outlined text-4xl text-primary"
+                data-icon="add_a_photo"
+                >add_a_photo</span
+              >
+              <span class="font-label-bold text-label-bold text-primary"
+                >Add Photo</span
+              >
+            </button>
+            <!-- Placeholder Slots -->
+            <div
+              class="aspect-square rounded-xl bg-surface-container border border-outline-variant flex items-center justify-center"
+            >
+              <span
+                class="material-symbols-outlined text-outline"
+                data-icon="image"
+                >image</span
+              >
+            </div>
+            <div
+              class="aspect-square rounded-xl bg-surface-container border border-outline-variant flex items-center justify-center"
+            >
+              <span
+                class="material-symbols-outlined text-outline"
+                data-icon="image"
+                >image</span
+              >
+            </div>
+            <div
+              class="aspect-square rounded-xl bg-surface-container border border-outline-variant flex items-center justify-center"
+            >
+              <span
+                class="material-symbols-outlined text-outline"
+                data-icon="image"
+                >image</span
+              >
+            </div>
+          </div>
+          <p class="mt-sm font-body-sm text-body-sm text-on-surface-variant">
+            Up to 10 photos. Use clear, bright images for 3x more interest.
+          </p>
+        </section>
+        <!-- Step 2: Listing Details -->
+        <section
+          class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/30 space-y-md"
+        >
+          <div class="flex items-center gap-2 mb-md">
+            <div
+              class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-bold text-label-bold"
+            >
+              2
+            </div>
+            <h3 class="font-headline-md text-headline-md">Listing Details</h3>
+          </div>
+          <!-- Title Field -->
+          <div class="space-y-xs">
+            <label
+              class="font-label-bold text-label-bold text-on-surface-variant"
+              >AD TITLE</label
+            >
+            <input
+              class="w-full bg-surface-container-low border-none rounded-lg p-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md text-body-md"
+              placeholder="e.g. iPhone 15 Pro Max - Like New"
+              type="text"
+            />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+            <!-- Category Field -->
+            <div class="space-y-xs">
+              <label
+                class="font-label-bold text-label-bold text-on-surface-variant"
+                >CATEGORY</label
+              >
+              <select
+                class="w-full bg-surface-container-low border-none rounded-lg p-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md text-body-md appearance-none"
+              >
+                <option>Select Category</option>
+                <option>Electronics</option>
+                <option>Vehicles</option>
+                <option>Property</option>
+                <option>Furniture</option>
+                <option>Jobs</option>
+              </select>
+            </div>
+            <!-- Price Field -->
+            <div class="space-y-xs">
+              <label
+                class="font-label-bold text-label-bold text-on-surface-variant"
+                >PRICE ($)</label
+              >
+              <input
+                class="w-full bg-surface-container-low border-none rounded-lg p-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md text-body-md"
+                placeholder="Enter Amount"
+                type="number"
+              />
+            </div>
+          </div>
+          <!-- Description Field -->
+          <div class="space-y-xs">
+            <label
+              class="font-label-bold text-label-bold text-on-surface-variant"
+              >DESCRIPTION</label
+            >
+            <textarea
+              class="w-full bg-surface-container-low border-none rounded-lg p-sm focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md text-body-md"
+              placeholder="Describe what you are selling. Include key features, condition, and reason for sale."
+              rows="6"
+            ></textarea>
+          </div>
+        </section>
+        <!-- Final Action -->
+        <div class="pt-md">
+          <button
+            class="w-full py-md bg-primary text-on-primary rounded-xl font-headline-md text-headline-md shadow-lg hover:bg-secondary transition-all transform active:scale-[0.98]"
+          >
+            Publish My Ad
+          </button>
+          <p
+            class="text-center mt-md font-body-sm text-body-sm text-on-surface-variant"
+          >
+            By publishing, you agree to our
+            <span class="text-primary font-semibold">Terms of Service</span> and
+            <span class="text-primary font-semibold">Privacy Policy</span>.
+          </p>
+        </div>
+      </div>
+    </main>
+    <!-- BottomNavBar from JSON (Filtered context: Post Ad is active) -->
+    <nav
+      class="bg-white dark:bg-zinc-950 fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 pb-safe bg-white dark:bg-zinc-950 shadow-[0_-2px_10px_rgba(0,0,0,0.04)] border-t border-zinc-100 dark:border-zinc-800 z-50"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="home">home</span>
+        <span class="text-[11px] font-medium font-sans uppercase tracking-wider"
+          >Home</span
+        >
+      </a>
+      <!-- ACTIVE TAB: Post Ad -->
+      <a
+        class="flex flex-col items-center justify-center text-green-700 dark:text-green-400 bg-green-50/50 dark:bg-green-900/20 rounded-xl py-1 px-4 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined"
+          data-icon="add_box"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >add_box</span
+        >
+        <span class="text-[11px] font-medium font-sans uppercase tracking-wider"
+          >Post Ad</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="chat_bubble"
+          >chat_bubble</span
+        >
+        <span class="text-[11px] font-medium font-sans uppercase tracking-wider"
+          >Inbox</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 py-1 hover:text-green-600 dark:hover:text-green-300 scale-95 active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span class="text-[11px] font-medium font-sans uppercase tracking-wider"
+          >Profile</span
+        >
+      </a>
+    </nav>
+  </body>
+</html>
