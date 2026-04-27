@@ -1,9 +1,9 @@
 // Detect if we're running in Capacitor native app
+// URL de l'API - injectable via variable d'environnement Vite (GitHub Actions)
 const isNative = window.Capacitor?.isNativePlatform?.() ?? false;
-const isEmulator = isNative && navigator.userAgent.includes("Android");
 const API_BASE_URL = isNative
-  ? "http://10.118.59.133:3000/api" // Ton IP Wi-Fi → pour vrai téléphone Android
-  : "http://localhost:3000/api"; // Navigateur web
+  ? "http://10.118.59.133:3000/api"
+  : "http://localhost:3000/api";
 
 class ApiService {
   // Helper pour récupérer les headers d'authentification
