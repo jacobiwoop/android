@@ -26,7 +26,7 @@ export function ProfilePage() {
 
         <div id="register-form" class="hidden">
           <h2 class="text-2xl font-black mb-2 text-secondary">Inscription</h2>
-          <p class="text-zinc-500 text-sm mb-6">Créez votre compte LuminaZen</p>
+          <p class="text-zinc-500 text-sm mb-6">Créez votre compte Byzo</p>
           
           <div class="space-y-4">
             <div>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">LuminaZen</string>
-    <string name="title_activity_main">LuminaZen</string>
+    <string name="app_name">Byzo</string>
+    <string name="title_activity_main">Byzo</string>
     <string name="package_name">com.luminazen.app</string>
     <string name="custom_url_scheme">com.luminazen.app</string>
 </resources>

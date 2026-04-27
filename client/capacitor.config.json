@@ -1,6 +1,6 @@
 {
   "appId": "com.luminazen.app",
-  "appName": "LuminaZen",
+  "appName": "Byzo",
   "webDir": "dist",
   "plugins": {
     "Camera": {

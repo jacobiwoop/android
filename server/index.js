@@ -47,7 +47,7 @@ app.use("/api/ads", adsRoutes);
 app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
-  res.send("LuminaZen API with Socket.io is running");
+  res.send("Byzo API with Socket.io is running");
 });
 
 server.listen(PORT, "0.0.0.0", () => {

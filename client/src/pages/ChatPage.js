@@ -34,7 +34,7 @@ export function ChatPage(users = []) {
         <div class="flex flex-col items-center justify-center h-full py-20 text-zinc-400">
           <span class="material-symbols-outlined text-6xl mb-4">forum</span>
           <p class="font-bold text-lg">Aucun utilisateur disponible</p>
-          <p class="text-sm mt-1">Invitez des amis à rejoindre LuminaZen !</p>
+          <p class="text-sm mt-1">Invitez des amis à rejoindre Byzo !</p>
         </div>
       `;
 

@@ -4,7 +4,7 @@ import { apiService } from "./services/ApiService.js";
 
 // Initialisation de l'application au chargement
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("LuminaZen Marketplace - Initialisation...");
+  console.log("Byzo Marketplace - Initialisation...");
 
   // Vérification globale de la session au démarrage
   const token = localStorage.getItem("token");
